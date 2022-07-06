@@ -4,7 +4,7 @@ namespace ZnCore\Arr\Helpers;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\Expr\Comparison;
-use ZnCore\Base\Develop\Helpers\DeprecateHelper;
+use ZnCore\Code\Helpers\DeprecateHelper;
 use ZnCore\Collection\Interfaces\Enumerable;
 use ZnCore\Collection\Libs\Collection;
 use ZnCore\Entity\Helpers\CollectionHelper;
