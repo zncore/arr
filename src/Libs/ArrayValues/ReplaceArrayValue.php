@@ -84,7 +84,7 @@ class ReplaceArrayValue
      */
     public static function __set_state($state)
     {
-        if ( ! isset($state['value'])) {
+        if (!isset($state['value'])) {
             throw new InvalidConfigException('Failed to instantiate class "Instance". Required parameter "id" is missing');
         }
 

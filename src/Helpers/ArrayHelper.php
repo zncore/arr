@@ -4,9 +4,7 @@ namespace ZnCore\Arr\Helpers;
 
 use ArrayAccess;
 use Closure;
-use DOMDocument;
 use DOMNode;
-use Exception;
 use yii2mod\collection\Collection;
 
 class ArrayHelper extends BaseArrayHelper

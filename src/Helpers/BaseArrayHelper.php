@@ -70,9 +70,9 @@ abstract class BaseArrayHelper
 
             return $object;
         } elseif (is_object($object)) {
-            if ( ! empty($properties)) {
+            if (!empty($properties)) {
                 $className = get_class($object);
-                if ( ! empty($properties[$className])) {
+                if (!empty($properties[$className])) {
                     $result = [];
                     foreach ($properties[$className] as $key => $name) {
                         if (is_int($key)) {
@@ -119,7 +119,7 @@ abstract class BaseArrayHelper
     {
         $args = func_get_args();
         $res = array_shift($args);
-        while ( ! empty($args)) {
+        while (!empty($args)) {
             foreach (array_shift($args) as $k => $v) {
                 if ($v instanceof UnsetArrayValue) {
                     unset($res[$k]);
@@ -279,10 +279,10 @@ abstract class BaseArrayHelper
 
         while (count($keys) > 1) {
             $key = array_shift($keys);
-            if ( ! isset($array[$key])) {
+            if (!isset($array[$key])) {
                 $array[$key] = [];
             }
-            if ( ! is_array($array[$key])) {
+            if (!is_array($array[$key])) {
                 $array[$key] = [$array[$key]];
             }
             $array = &$array[$key];
@@ -299,7 +299,7 @@ abstract class BaseArrayHelper
         }
 
         $keys = is_array($path) ? $path : explode('.', $path);
-        self::getItemLink($array, $keys, function(&$array, $lastKey) {
+        self::getItemLink($array, $keys, function (&$array, $lastKey) {
             unset($array[$lastKey]);
         });
     }
@@ -308,10 +308,10 @@ abstract class BaseArrayHelper
     {
         while (count($keys) > 1) {
             $key = array_shift($keys);
-            if ( ! isset($array[$key])) {
+            if (!isset($array[$key])) {
                 $array[$key] = [];
             }
-            if ( ! is_array($array[$key])) {
+            if (!is_array($array[$key])) {
                 $array[$key] = [$array[$key]];
             }
             $array = &$array[$key];
@@ -487,21 +487,21 @@ abstract class BaseArrayHelper
     public static function index($array, $key, $groups = [])
     {
         $result = [];
-        $groups = (array) $groups;
+        $groups = (array)$groups;
 
         foreach ($array as $element) {
             $lastArray = &$result;
 
             foreach ($groups as $group) {
                 $value = static::getValue($element, $group);
-                if ( ! array_key_exists($value, $lastArray)) {
+                if (!array_key_exists($value, $lastArray)) {
                     $lastArray[$value] = [];
                 }
                 $lastArray = &$lastArray[$value];
             }
 
             if ($key === null) {
-                if ( ! empty($groups)) {
+                if (!empty($groups)) {
                     $lastArray[] = $element;
                 }
             } else {
@@ -715,7 +715,7 @@ abstract class BaseArrayHelper
         }
         $d = [];
         foreach ($data as $key => $value) {
-            if ( ! $valuesOnly && is_string($key)) {
+            if (!$valuesOnly && is_string($key)) {
                 $key = htmlspecialchars($key, ENT_QUOTES | ENT_SUBSTITUTE, $charset);
             }
             if (is_string($value)) {
@@ -745,7 +745,7 @@ abstract class BaseArrayHelper
     {
         $d = [];
         foreach ($data as $key => $value) {
-            if ( ! $valuesOnly && is_string($key)) {
+            if (!$valuesOnly && is_string($key)) {
                 $key = htmlspecialchars_decode($key, ENT_QUOTES);
             }
             if (is_string($value)) {
@@ -775,13 +775,13 @@ abstract class BaseArrayHelper
      */
     public static function isAssociative($array, $allStrings = true)
     {
-        if ( ! is_array($array) || empty($array)) {
+        if (!is_array($array) || empty($array)) {
             return false;
         }
 
         if ($allStrings) {
             foreach ($array as $key => $value) {
-                if ( ! is_string($key)) {
+                if (!is_string($key)) {
                     return false;
                 }
             }
@@ -813,7 +813,7 @@ abstract class BaseArrayHelper
      */
     public static function isIndexed($array, $consecutive = false)
     {
-        if ( ! is_array($array)) {
+        if (!is_array($array)) {
             return false;
         }
 
@@ -826,7 +826,7 @@ abstract class BaseArrayHelper
         }
 
         foreach ($array as $key => $value) {
-            if ( ! is_int($key)) {
+            if (!is_int($key)) {
                 return false;
             }
         }
@@ -851,7 +851,7 @@ abstract class BaseArrayHelper
     {
         if ($haystack instanceof \Traversable) {
             foreach ($haystack as $value) {
-                if ($needle == $value && ( ! $strict || $needle === $value)) {
+                if ($needle == $value && (!$strict || $needle === $value)) {
                     return true;
                 }
             }
@@ -887,15 +887,15 @@ abstract class BaseArrayHelper
      * @param array|\Traversable $needles The values that must **all** be in `$haystack`.
      * @param array|\Traversable $haystack The set of value to search.
      * @param bool $strict Whether to enable strict (`===`) comparison.
-     * @throws InvalidArgumentException if `$haystack` or `$needles` is neither traversable nor an array.
      * @return bool `true` if `$needles` is a subset of `$haystack`, `false` otherwise.
+     * @throws InvalidArgumentException if `$haystack` or `$needles` is neither traversable nor an array.
      * @since 2.0.7
      */
     public static function isSubset($needles, $haystack, $strict = false)
     {
         if (is_array($needles) || $needles instanceof \Traversable) {
             foreach ($needles as $needle) {
-                if ( ! static::isIn($needle, $haystack, $strict)) {
+                if (!static::isIn($needle, $haystack, $strict)) {
                     return false;
                 }
             }
@@ -968,17 +968,17 @@ abstract class BaseArrayHelper
                 continue;
             }
 
-            if ( ! array_key_exists($globalKey, $array)) {
+            if (!array_key_exists($globalKey, $array)) {
                 continue;
             }
             if ($localKey === null) {
                 $result[$globalKey] = $array[$globalKey];
                 continue;
             }
-            if ( ! isset($array[$globalKey][$localKey])) {
+            if (!isset($array[$globalKey][$localKey])) {
                 continue;
             }
-            if ( ! array_key_exists($globalKey, $result)) {
+            if (!array_key_exists($globalKey, $result)) {
                 $result[$globalKey] = [];
             }
             $result[$globalKey][$localKey] = $array[$globalKey][$localKey];
