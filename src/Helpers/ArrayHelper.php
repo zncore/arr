@@ -7,19 +7,18 @@ use Closure;
 use DOMNode;
 use yii2mod\collection\Collection;
 
+/**
+ * Хэлпер для работы с массивами.
+ */
 class ArrayHelper extends BaseArrayHelper
 {
 
-    public static function nullingEmptyItems(array $data): array
-    {
-        foreach ($data as $key => $value) {
-            if (empty($value) && $value !== false && $value != 0) {
-                $data[$key] = null;
-            }
-        }
-        return $data;
-    }
-
+    /**
+     * Удалить пустые элементы массива.
+     *
+     * @param array $data
+     * @return array
+     */
     public static function removeEmptyItems(array $data): array
     {
         foreach ($data as $key => $value) {
