@@ -4,7 +4,7 @@ namespace ZnCore\Arr\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
-use ZnCore\Validation\Constraints\BaseValidator;
+use ZnDomain\Validator\Constraints\BaseValidator;
 
 class ArrValidator extends BaseValidator
 {
