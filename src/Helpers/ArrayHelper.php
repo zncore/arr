@@ -29,7 +29,14 @@ class ArrayHelper extends BaseArrayHelper
         return $data;
     }
 
-    public static function collectionExtractByKeys(array $array, array $keys = []): array
+    /**
+     * Получить элементы массива, содержащие указанные поля.
+     *
+     * @param array $array
+     * @param array $keys
+     * @return array
+     */
+    public static function extractItemsWithAttributes(array $array, array $keys = []): array
     {
         foreach ($array as &$item) {
             $item = self::extractByKeys($item, $keys);
@@ -37,6 +44,13 @@ class ArrayHelper extends BaseArrayHelper
         return $array;
     }
 
+    /**
+     * Сортировка массива по длине строки.
+     *
+     * @param $a
+     * @param $b
+     * @return int
+     */
     public static function sortByLen($a, $b)
     {
         if (strlen($a) < strlen($b)) {
@@ -48,14 +62,20 @@ class ArrayHelper extends BaseArrayHelper
         }
     }
 
-    public static function firstKey($array)
+    /**
+     * Получить ключ первого элемента массива
+     *
+     * @param array $array
+     * @return mixed
+     */
+    public static function firstKey(array $array)
     {
         $keys = array_keys($array);
         $firstKey = $keys[0];
         return $firstKey;
     }
 
-    public static function itemsToInt($array)
+    /*public static function itemsToInt($array)
     {
         return self::prepareItems($array, 'intval');
     }
@@ -78,7 +98,7 @@ class ArrayHelper extends BaseArrayHelper
             }
         }
         return $result;
-    }
+    }*/
 
     public static function extractByKeys($array, $keys)
     {
@@ -97,13 +117,13 @@ class ArrayHelper extends BaseArrayHelper
         return $result;
     }
 
-    /**
+    /*
      * @param array $array
      * @param string|\Closure $key
      * @param mixed $default
      * @return array
      */
-    public static function group($array, $key, $default = null)
+    /*public static function group($array, $key, $default = null)
     {
         $result = [];
         foreach ($array as $k => $element) {
@@ -111,9 +131,9 @@ class ArrayHelper extends BaseArrayHelper
         }
 
         return $result;
-    }
+    }*/
 
-    static function inArrayKey($value, $array, $default = null)
+    /*static function inArrayKey($value, $array, $default = null)
     {
         if (!array_key_exists($value, $array)) {
             if (func_num_args() > 2) {
@@ -123,7 +143,7 @@ class ArrayHelper extends BaseArrayHelper
             }
         }
         return $value;
-    }
+    }*/
 
     static function removeByValue($value, &$array)
     {
@@ -145,7 +165,7 @@ class ArrayHelper extends BaseArrayHelper
         return $array;
     }
 
-    public static function findAll(&$array, $condition)
+    /*public static function findAll(&$array, $condition)
     {
         $all = [];
         foreach ($array as $item) {
@@ -197,7 +217,7 @@ class ArrayHelper extends BaseArrayHelper
             }
         }
         return false;
-    }
+    }*/
 
     // ==========
 
